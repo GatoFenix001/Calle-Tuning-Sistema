@@ -1,0 +1,573 @@
+/* =========================================================
+   CALLE TUNING | PANEL DEL VENDEDOR
+   Identidad visual compartida con el panel de administrador
+   ========================================================= */
+
+:root {
+    --red: #d71920;
+    --red-dark: #a90f15;
+    --black: #111111;
+    --black-2: #1b1b1b;
+    --white: #ffffff;
+    --gray: #f4f4f4;
+    --gray-2: #e8e8e8;
+    --text: #171717;
+    --muted: #777777;
+    --shadow: 0 8px 25px rgba(0, 0, 0, .10);
+    --radius: 14px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--gray);
+    color: var(--text);
+    min-height: 100vh;
+    font-size: 13px;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* Estructura general */
+.app {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Menú lateral */
+.sidebar {
+    width: 255px;
+    background: var(--black);
+    color: var(--white);
+    position: fixed;
+    inset: 0 auto 0 0;
+    display: flex;
+    flex-direction: column;
+    z-index: 20;
+    border-right: 4px solid var(--red);
+}
+
+.brand {
+    padding: 24px 20px;
+    border-bottom: 1px solid #303030;
+}
+
+.brand h1 {
+    font-size: 25px;
+    letter-spacing: 1.5px;
+    font-weight: 900;
+    line-height: 1.2;
+}
+
+.brand span {
+    color: var(--red);
+    display: block;
+}
+
+.brand p {
+    color: #bbb;
+    font-size: 11px;
+    margin-top: 7px;
+    letter-spacing: .5px;
+}
+
+.nav {
+    padding: 15px 10px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.nav-title {
+    color: #777;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1.4px;
+    padding: 12px 10px 7px;
+    text-transform: uppercase;
+}
+
+.nav-title a {
+    display: block;
+    padding: 10px 8px;
+    color: #ddd;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 12px;
+}
+
+.nav-title a:hover {
+    color: white;
+    background: #272727;
+}
+
+.nav button {
+    width: 100%;
+    border: 0;
+    background: transparent;
+    color: #ddd;
+    text-align: left;
+    padding: 12px 13px;
+    margin: 2px 0;
+    border-radius: 9px;
+    transition: background .2s, color .2s;
+    font-size: 12px;
+}
+
+.nav button:hover {
+    background: #272727;
+    color: white;
+}
+
+.nav button.active {
+    background: var(--red);
+    color: white;
+    box-shadow: 0 5px 15px rgba(215, 25, 32, .25);
+}
+
+.sidebar-footer {
+    border-top: 1px solid #303030;
+    padding: 15px 18px;
+    color: #999;
+    font-size: 11px;
+}
+
+/* Contenido y barra superior */
+.main {
+    margin-left: 255px;
+    width: calc(100% - 255px);
+    min-width: 0;
+    min-height: 100vh;
+}
+
+.topbar {
+    min-height: 72px;
+    background: white;
+    border-bottom: 1px solid var(--gray-2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 14px 30px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.topbar-title h2 {
+    font-size: 21px;
+    line-height: 1.3;
+}
+
+.topbar-title p {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 4px;
+    line-height: 1.5;
+}
+
+.user-box {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.user-box .btn {
+    padding: 9px 13px;
+}
+
+.content {
+    padding: 24px 25px 32px;
+}
+
+/* Botones */
+.btn {
+    border: 0;
+    border-radius: 9px;
+    padding: 11px 16px;
+    font-weight: bold;
+    font-size: 12px;
+    transition: background .2s, transform .2s;
+}
+
+.btn-primary {
+    background: var(--red);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--red-dark);
+    transform: translateY(-1px);
+}
+
+.btn:not(.btn-primary) {
+    background: var(--black);
+    color: white;
+}
+
+.btn:not(.btn-primary):hover {
+    background: #303030;
+}
+
+/* Paneles de consulta */
+.read-panel {
+    background: white;
+    border-radius: var(--radius);
+    padding: 20px;
+    margin-bottom: 18px;
+    box-shadow: var(--shadow);
+    min-width: 0;
+}
+
+.read-panel h2 {
+    margin: 0 0 12px;
+    font-size: 18px;
+    color: var(--black);
+}
+
+.read-panel>p {
+    margin: 0 0 16px;
+    font-size: 12px;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Tarjetas de resumen */
+.read-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.read-cards article {
+    padding: 18px;
+    border-left: 4px solid var(--red);
+    background: #fff;
+    border-radius: 11px;
+    display: grid;
+    gap: 8px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, .07);
+}
+
+.read-cards article span {
+    color: #777;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.read-cards strong {
+    font-size: 27px;
+    line-height: 1.1;
+    color: var(--black);
+}
+
+/* Tablas */
+.read-table,
+.service-table-wrap {
+    width: 100%;
+    overflow: auto;
+}
+
+.read-table table,
+.service-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 620px;
+    background: white;
+}
+
+.read-table th,
+.service-table th {
+    background: var(--black);
+    color: white;
+    text-align: left;
+    padding: 13px 12px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .35px;
+    white-space: nowrap;
+}
+
+.read-table td,
+.service-table td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    color: #222;
+    font-size: 12px;
+    vertical-align: middle;
+}
+
+.read-table tbody tr:hover,
+.service-table tbody tr:hover {
+    background: #fafafa;
+}
+
+/* Módulo de servicios */
+.service-wrap {
+    margin-top: 20px;
+    padding: 22px;
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    min-width: 0;
+}
+
+.service-wrap>h2 {
+    font-size: 22px;
+    margin-bottom: 18px;
+}
+
+.service-wrap>h3 {
+    font-size: 16px;
+    margin: 22px 0 14px;
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    margin: 18px 0 24px;
+}
+
+.service-card {
+    background: white;
+    border: 1px solid var(--gray-2);
+    border-left: 4px solid var(--red);
+    border-radius: 12px;
+    padding: 18px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, .06);
+}
+
+.service-card h3 {
+    font-size: 15px;
+    margin-bottom: 8px;
+    color: var(--black);
+}
+
+.service-card p {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.service-form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid var(--gray-2);
+}
+
+.service-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    color: #555;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.service-form input,
+.service-form select,
+.service-form textarea {
+    width: 100%;
+    padding: 11px 12px;
+    background: white;
+    color: var(--text);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    font-size: 13px;
+    text-transform: none;
+}
+
+.service-form input:focus,
+.service-form select:focus,
+.service-form textarea:focus {
+    border-color: var(--red);
+    box-shadow: 0 0 0 3px rgba(215, 25, 32, .08);
+}
+
+.service-form textarea {
+    resize: vertical;
+    min-height: 90px;
+}
+
+.service-form .full {
+    grid-column: 1 / -1;
+}
+
+.service-form button {
+    justify-self: start;
+}
+
+.service-table {
+    margin-top: 12px;
+}
+
+.status-select {
+    background: white;
+    color: var(--text);
+    border: 1px solid #ddd;
+    padding: 8px;
+    border-radius: 7px;
+}
+
+.notice {
+    padding: 10px 0;
+    color: var(--red-dark);
+    font-size: 12px;
+}
+
+/* Accesibilidad visual al navegar por secciones */
+#dashboard,
+#productos,
+#clientes,
+#ventas,
+#detalles,
+#servicios {
+    scroll-margin-top: 90px;
+}
+
+/* Adaptación a pantallas medianas */
+@media (max-width: 1100px) {
+    .service-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .content {
+        padding: 22px 20px;
+    }
+
+    .topbar {
+        padding: 14px 20px;
+    }
+}
+
+/* Adaptación a móviles */
+@media (max-width: 800px) {
+    .sidebar {
+        width: 220px;
+    }
+
+    .main {
+        margin-left: 220px;
+        width: calc(100% - 220px);
+    }
+
+    .read-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .service-form {
+        grid-template-columns: 1fr;
+    }
+
+    .service-form .full {
+        grid-column: auto;
+    }
+
+    .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .user-box {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 600px) {
+    .app {
+        display: block;
+    }
+
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        max-height: none;
+        border-right: 0;
+        border-bottom: 4px solid var(--red);
+    }
+
+    .nav {
+        max-height: 290px;
+    }
+
+    .main {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .topbar {
+        position: static;
+        padding: 16px;
+    }
+
+    .content {
+        padding: 14px;
+    }
+
+    .read-panel,
+    .service-wrap {
+        padding: 16px;
+    }
+
+    .service-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .service-form {
+        padding: 14px;
+    }
+
+    .user-box {
+        flex-wrap: wrap;
+    }
+}
+
+/* Vistas independientes del panel del vendedor */
+#dashboard,
+#productos,
+#clientes,
+#ventas,
+#detalles,
+#servicios {
+    display: none;
+}
+
+#dashboard.vista-activa,
+#productos.vista-activa,
+#clientes.vista-activa,
+#ventas.vista-activa,
+#detalles.vista-activa,
+#servicios.vista-activa {
+    display: block;
+}

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#111111">
+    <title>Tienda | CALLE TUNING</title>
+
+    <link rel="stylesheet" href="/css/tienda.css">
+    <script src="/js/tienda.js" defer></script>
+</head>
+
+<body>
+    <header class="encabezado">
+        <a class="marca" href="/tienda.html" aria-label="CALLE TUNING - Inicio">
+            <span class="marca-icono">CT</span>
+            <span>CALLE <strong>TUNING</strong></span>
+        </a>
+
+        <nav class="navegacion">
+            <a href="#inicio">Inicio</a>
+            <a href="#catalogo">Productos</a>
+        </nav>
+        <div class="acciones-cuenta" id="accionesCuenta">
+            <button class="boton-cuenta boton-secundario" id="abrirLogin" type="button">Iniciar sesión</button>
+            <button class="boton-cuenta boton-registro" id="abrirRegistro" type="button">Registrarme</button>
+        </div>
+        <div class="acciones-cuenta" id="cuentaActiva" hidden><span id="nombreSesion"
+                class="nombre-sesion"></span><button class="boton-cuenta boton-secundario" id="cerrarSesion"
+                type="button">Cerrar sesión</button></div>
+
+        <button id="btnCarrito" class="boton-carrito" type="button" aria-label="Ver carrito"
+            aria-controls="panelCarrito">
+            <span aria-hidden="true">🛒</span>
+            <span>Mi carrito</span>
+            <span id="contadorCarrito" class="contador">0</span>
+        </button>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero">
+            <div class="hero-contenido">
+                <span class="etiqueta">TU MOTO, TU ESTILO</span>
+                <h1>Haz que tu moto<br>hable por ti.</h1>
+                <p>
+                    Explora los productos disponibles de CALLE TUNING
+                    y encuentra lo que necesitas para personalizar y
+                    proteger tu motocicleta.
+                </p>
+                <a href="#catalogo" class="boton-principal">
+                    Explorar productos
+                </a>
+            </div>
+
+            <div class="hero-decoracion" aria-hidden="true">
+                <span class="hero-simbolo">CT</span>
+                <span class="hero-texto">PERSONALIZA · PROTEGE · DESTACA</span>
+            </div>
+        </section>
+
+        <section id="catalogo" class="seccion-catalogo">
+            <div class="encabezado-seccion">
+                <div>
+                    <span class="etiqueta">NUESTRO CATÁLOGO</span>
+                    <h2>Productos destacados</h2>
+                    <p>Consulta los productos registrados en nuestro inventario.</p>
+                </div>
+                <span id="totalProductos" class="total-productos">
+                    Cargando productos...
+                </span>
+            </div>
+
+            <div class="barra-filtros">
+                <label class="buscador">
+                    <span aria-hidden="true">⌕</span>
+                    <input id="buscarProducto" type="search" placeholder="Buscar por nombre o descripción..."
+                        autocomplete="off">
+                </label>
+
+                <label class="filtro-categoria">
+                    <span class="texto-filtro">Categoría</span>
+                    <select id="filtroCategoria">
+                        <option value="">Todas las categorías</option>
+                    </select>
+                </label>
+            </div>
+
+            <div id="estadoCatalogo" class="estado-catalogo" role="status">
+                Cargando catálogo...
+            </div>
+
+            <div id="catalogoProductos" class="rejilla-productos"></div>
+        </section>
+    </main>
+
+    <div id="fondoCarrito" class="fondo-carrito" hidden></div>
+
+    <aside id="panelCarrito" class="panel-carrito" aria-label="Carrito de compras" aria-hidden="true">
+        <div class="carrito-encabezado">
+            <div>
+                <span class="etiqueta">TU SELECCIÓN</span>
+                <h2>Mi carrito</h2>
+            </div>
+            <button id="cerrarCarrito" class="boton-cerrar" type="button" aria-label="Cerrar carrito">×</button>
+        </div>
+
+        <div id="listaCarrito" class="lista-carrito">
+            <p class="carrito-vacio">Todavía no has agregado productos.</p>
+        </div>
+
+        <div class="carrito-pie">
+            <div class="fila-total">
+                <span>Subtotal</span>
+                <strong id="subtotalCarrito">S/ 0.00</strong>
+            </div>
+            <p class="nota-carrito">
+                El subtotal es referencial. La compra todavía no se ha confirmado.
+            </p>
+            <button id="btnContinuarCompra" class="boton-principal boton-ancho" type="button" disabled>
+                Continuar
+            </button>
+            <p id="mensajeCarrito" class="mensaje-carrito" role="status"></p>
+        </div>
+    </aside>
+
+    <footer class="pie-pagina">
+        <a class="marca marca-pie" href="/tienda.html">
+            <span class="marca-icono">CT</span>
+            <span>CALLE <strong>TUNING</strong></span>
+        </a>
+        <p>Personaliza. Protege. Destaca.</p>
+        <span>© <span id="anioActual"></span> CALLE TUNING</span>
+    </footer>
+    <style>
+        .nombre-sesion {
+            color: #fff;
+            font-weight: 700
+        }
+
+        .acciones-cuenta[hidden],
+        #cuentaActiva[hidden] {
+            display: none !important
+        }
+
+        .acciones-cuenta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-left: auto
+        }
+
+        .boton-cuenta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 15px;
+            border-radius: 9px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: .9rem;
+            white-space: nowrap
+        }
+
+        .boton-secundario {
+            border: 1px solid #d7d7d7;
+            color: #171717;
+            background: #fff
+        }
+
+        .boton-registro {
+            background: #d6a84f;
+            color: #171717;
+            border: 1px solid #d6a84f
+        }
+
+        @media(max-width:760px) {
+            .encabezado {
+                flex-wrap: wrap;
+                gap: 12px
+            }
+
+            .acciones-cuenta {
+                order: 3;
+                margin-left: 0
+            }
+
+            .boton-cuenta {
+                padding: 9px 11px;
+                font-size: .82rem
+            }
+        }
+    </style>
+
+
+    <div class="modal-auth" id="modalAuth" hidden>
+        <div class="modal-auth-fondo" data-cerrar-auth></div>
+        <section class="modal-auth-panel" role="dialog" aria-modal="true" aria-labelledby="tituloAuth">
+            <button class="modal-auth-cerrar" type="button" data-cerrar-auth aria-label="Cerrar">×</button>
+            <a class="marca modal-marca" href="/tienda.html"><span class="marca-icono">CT</span><span>CALLE
+                    <strong>TUNING</strong></span></a>
+            <div class="auth-tabs">
+                <button type="button" id="tabLogin" class="activo">Iniciar sesión</button>
+                <button type="button" id="tabRegistro">Registro de cliente</button>
+            </div>
+            <h2 id="tituloAuth">Bienvenido</h2>
+            <p class="auth-subtitulo">Accede a tu cuenta de CALLE TUNING.</p>
+            <form id="formLoginModal">
+                <label>Usuario<input name="username" autocomplete="username" required></label>
+                <label>Contraseña<input name="password" type="password" autocomplete="current-password"
+                        required></label>
+                <p class="auth-mensaje" id="mensajeLogin" role="alert"></p>
+                <button class="boton-principal" type="submit">Iniciar sesión</button>
+            </form>
+            <form id="formRegistroModal" hidden>
+                <label>Nombre<input name="nombre" maxlength="100" required></label>
+                <label>Apellido<input name="apellido" maxlength="100" required></label>
+                <label>Correo electrónico<input name="email" type="email" maxlength="150" autocomplete="email"
+                        required></label>
+                <label>Usuario<input name="username" minlength="4" maxlength="50" autocomplete="username"
+                        required></label>
+                <label>Contraseña<input name="password" type="password" minlength="8" maxlength="72"
+                        autocomplete="new-password" required></label>
+                <p class="auth-mensaje" id="mensajeRegistroModal" role="alert"></p>
+                <button class="boton-principal" type="submit">Crear cuenta de cliente</button>
+            </form>
+            <p class="auth-nota">Las cuentas de vendedor solo pueden ser creadas por el administrador.</p>
+        </section>
+    </div>
+    \n
+    <script src="/js/auth-modal.js" defer></script>\n
+</body>
+
+</html>

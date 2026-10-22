@@ -1,0 +1,313 @@
+:root {
+    --fondo: #101010;
+    --superficie: #191919;
+    --superficie-clara: #222222;
+    --texto: #f5f5f5;
+    --secundario: #a6a6a6;
+    --acento: #f5c400;
+    --borde: #303030;
+    --exito: #8bd6a0;
+    --error: #ff7777;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    background: var(--fondo);
+    color: var(--texto);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.encabezado {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 15px 6%;
+    border-bottom: 1px solid var(--borde);
+    background: #111;
+}
+
+.marca {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.marca strong {
+    color: var(--acento);
+}
+
+.marca-icono {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--acento);
+    color: #111;
+    font-weight: 900;
+}
+
+.encabezado-texto {
+    color: var(--secundario);
+    font-size: 13px;
+}
+
+.contenedor {
+    width: min(900px, 92%);
+    margin: 48px auto;
+    flex: 1;
+}
+
+.estado-compra,
+.mensaje-error {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 38px 25px;
+    text-align: center;
+    background: var(--superficie);
+    border: 1px solid var(--borde);
+    border-radius: 18px;
+}
+
+.icono-estado,
+.icono-error {
+    display: grid;
+    place-items: center;
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    font-size: 32px;
+    font-weight: 800;
+}
+
+.icono-estado {
+    color: var(--acento);
+    background: #f5c40018;
+}
+
+.icono-error {
+    color: var(--error);
+    background: #ff77771a;
+}
+
+.estado-compra h1,
+.mensaje-error h1 {
+    margin: 0 0 10px;
+    font-size: clamp(25px, 4vw, 34px);
+}
+
+.estado-compra p,
+.mensaje-error p {
+    color: var(--secundario);
+    line-height: 1.8;
+}
+
+.confirmacion-titulo {
+    padding: 30px 20px;
+    text-align: center;
+    background:
+        radial-gradient(ellipse at top, #39300c, transparent 70%),
+        var(--superficie);
+    border: 1px solid var(--borde);
+    border-radius: 18px;
+}
+
+.etiqueta {
+    color: var(--acento);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.confirmacion-titulo h1 {
+    margin: 12px 0;
+    font-size: clamp(30px, 5vw, 44px);
+}
+
+.confirmacion-titulo p {
+    margin-bottom: 0;
+    color: var(--secundario);
+}
+
+.datos-compra {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    margin: 24px 0 35px;
+}
+
+.datos-compra>div {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    padding: 18px;
+    background: var(--superficie);
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+}
+
+.datos-compra span {
+    color: var(--secundario);
+    font-size: 12px;
+}
+
+.datos-compra strong {
+    overflow-wrap: anywhere;
+}
+
+.estado-registrado {
+    color: var(--exito);
+}
+
+.resumen-compra h2 {
+    margin: 0 0 16px;
+    font-size: 23px;
+}
+
+.tabla-contenedor {
+    overflow-x: auto;
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--superficie);
+    font-size: 13px;
+}
+
+th,
+td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--borde);
+    white-space: nowrap;
+}
+
+th {
+    background: var(--superficie-clara);
+    color: var(--secundario);
+    font-weight: 600;
+}
+
+tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.total-compra {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 20px;
+    padding: 22px;
+    background: var(--superficie);
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+}
+
+.total-compra strong {
+    color: var(--acento);
+    font-size: 26px;
+}
+
+.aviso {
+    color: var(--secundario);
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.boton-principal {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 46px;
+    margin-top: 16px;
+    padding: 12px 22px;
+    color: #111;
+    background: var(--acento);
+    border: 0;
+    border-radius: 10px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.boton-principal:hover {
+    background: #ffda36;
+}
+
+.mensaje-error .boton-principal {
+    margin-top: 10px;
+}
+
+.pie-pagina {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 22px 6%;
+    color: var(--secundario);
+    background: #0b0b0b;
+    border-top: 1px solid var(--borde);
+    font-size: 12px;
+}
+
+@media (max-width: 600px) {
+    .encabezado {
+        padding: 12px 4%;
+    }
+
+    .marca {
+        font-size: 13px;
+    }
+
+    .encabezado-texto {
+        font-size: 11px;
+        text-align: right;
+    }
+
+    .contenedor {
+        margin: 28px auto;
+    }
+
+    .datos-compra {
+        grid-template-columns: 1fr;
+    }
+
+    .datos-compra>div {
+        padding: 14px;
+    }
+
+    .total-compra {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .pie-pagina {
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,52 @@
+.login-card {
+    max-width: 500px
+}
+
+.registro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px
+}
+
+.registro-grid label {
+    display: block;
+    font-weight: 600;
+    font-size: .9rem
+}
+
+.registro-grid input {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 6px
+}
+
+.registro-grid .completo {
+    grid-column: 1/-1
+}
+
+.aviso {
+    padding: 12px;
+    border-radius: 8px;
+    margin: 12px 0;
+    background: #f3f3f3
+}
+
+.aviso.error {
+    background: #ffeded;
+    color: #8b2020
+}
+
+.aviso.success {
+    background: #e9f8ef;
+    color: #166534
+}
+
+@media(max-width:520px) {
+    .registro-grid {
+        grid-template-columns: 1fr
+    }
+
+    .registro-grid .completo {
+        grid-column: auto
+    }
+}

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>CALLE TUNING | Panel del vendedor</title>
+    <link rel="stylesheet" href="/css/vendedor.css">
+</head>
+
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <div class="brand">
+                <h1>CALLE <span>TUNING</span></h1>
+                <p>Panel del vendedor</p>
+            </div>
+            <nav class="nav">
+                <div class="nav-title">Principal</div>
+                <button class="active" type="button" data-seccion="dashboard">Dashboard</button>
+                <div class="nav-title">Consulta</div>
+                <button type="button" data-seccion="productos">Productos</button>
+                <button type="button" data-seccion="clientes">Clientes</button>
+                <button type="button" data-seccion="ventas">Ventas</button>
+                <button type="button" data-seccion="detalles">Detalles de venta</button>
+                <button type="button" data-seccion="servicios">Servicios de taller</button>
+                <div class="nav-title">
+                    <a href="/tienda.html" style="display:block;padding:12px 18px;color:#eee">
+                        Ver tienda ↗
+                    </a>
+                </div>
+            </nav>
+            <div class="sidebar-footer">Acceso de vendedor</div>
+        </aside>
+        <main class="main">
+            <header class="topbar">
+                <div class="topbar-title">
+                    <h2>Gestión de servicios</h2>
+                    <p>Registra órdenes y actualiza su estado. No puedes editar productos ni datos administrativos.</p>
+                </div>
+                <div class="user-box"><span>Vendedor</span><button class="btn" id="salir">Cerrar sesión</button></div>
+            </header>
+            <section class="content">
+                <div class="read-panel" id="dashboard">
+                    <h2>Dashboard</h2>
+                    <p>Resumen de consulta del sistema. El vendedor no puede modificar productos ni datos
+                        administrativos.</p>
+                    <div class="read-cards">
+                        <article><span>Productos</span><strong id="totalProductosV">—</strong></article>
+                        <article><span>Clientes</span><strong id="totalClientesV">—</strong></article>
+                        <article><span>Ventas</span><strong id="totalVentasV">—</strong></article>
+                    </div>
+                </div>
+                <div class="read-panel" id="productos">
+                    <h2>Productos</h2>
+                    <p>Solo consulta; edición reservada al administrador.</p>
+                    <div class="read-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Producto</th>
+                                    <th>Precio</th>
+                                    <th>Stock</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaProductos">
+                                <tr>
+                                    <td colspan="4">Cargando…</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="read-panel" id="clientes">
+                    <h2>Clientes</h2>
+                    <p>Solo consulta.</p>
+                    <div class="read-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Documento</th>
+                                    <th>Correo</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaClientes">
+                                <tr>
+                                    <td colspan="4">Cargando…</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="read-panel" id="ventas">
+                    <h2>Ventas</h2>
+                    <p>Solo consulta; no se permite crear, editar ni eliminar ventas desde este panel.</p>
+                    <div class="read-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Fecha</th>
+                                    <th>Total</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaVentas">
+                                <tr>
+                                    <td colspan="4">Cargando…</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="read-panel" id="detalles">
+                    <h2>Detalles de venta</h2>
+                    <p>Detalle de productos vendidos.</p>
+                    <div class="read-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Venta</th>
+                                    <th>Producto</th>
+                                    <th>Cantidad</th>
+                                    <th>Subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaDetalles">
+                                <tr>
+                                    <td colspan="5">Cargando…</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="service-wrap" id="servicios">
+                    <h2>Servicios de tuning y taller</h2>
+                    <div class="service-grid">
+                        <div class="service-card">
+                            <h3>Tuning</h3>
+                            <p>Personalización y mejoras estéticas.</p>
+                        </div>
+                        <div class="service-card">
+                            <h3>Calibración</h3>
+                            <p>Ajustes y calibración del vehículo.</p>
+                        </div>
+                        <div class="service-card">
+                            <h3>Mantenimiento</h3>
+                            <p>Servicio preventivo y revisión.</p>
+                        </div>
+                        <div class="service-card">
+                            <h3>Reparación</h3>
+                            <p>Diagnóstico y reparación.</p>
+                        </div>
+                    </div>
+                    <h3>Registrar orden de servicio</h3>
+                    <form class="service-form" id="formServicio"><label>Nombre del cliente *<input name="cliente"
+                                maxlength="100" required></label><label>Vehículo (marca/modelo/placa) *<input
+                                name="vehiculo" maxlength="120" required></label><label>Tipo de servicio *<select
+                                name="tipoServicio" required>
+                                <option value="TUNING">Tuning</option>
+                                <option value="CALIBRACION">Calibración</option>
+                                <option value="MANTENIMIENTO">Mantenimiento</option>
+                                <option value="REPARACION">Reparación</option>
+                            </select></label><label class="full">Descripción / diagnóstico<textarea name="descripcion"
+                                maxlength="1000" rows="3"></textarea></label><button class="btn btn-primary"
+                            type="submit">Registrar orden</button></form>
+                    <p class="notice" id="mensaje"></p>
+                    <h3>Órdenes registradas</h3>
+                    <div style="overflow:auto">
+                        <table class="service-table">
+                            <thead>
+                                <tr>
+                                    <th>N.º</th>
+                                    <th>Cliente</th>
+                                    <th>Vehículo</th>
+                                    <th>Servicio</th>
+                                    <th>Responsable</th>
+                                    <th>Fecha</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ordenes">
+                                <tr>
+                                    <td colspan="7">Cargando órdenes...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="/js/vendedor.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#111111">
+    <title>Confirmación de compra | CALLE TUNING</title>
+
+    <link rel="stylesheet" href="/css/confirmacion-compra.css">
+    <script src="/js/confirmacion-compra.js" defer></script>
+</head>
+
+<body>
+    <header class="encabezado">
+        <a class="marca" href="/tienda.html">
+            <span class="marca-icono">CT</span>
+            <span>CALLE <strong>TUNING</strong></span>
+        </a>
+        <span class="encabezado-texto">Resumen de compra</span>
+    </header>
+
+    <main class="contenedor">
+        <section id="estadoCompra" class="estado-compra" aria-live="polite">
+            <div class="icono-estado" aria-hidden="true">…</div>
+            <h1>Verificando tu compra</h1>
+            <p>Estamos revisando la información de la operación.</p>
+        </section>
+
+        <section id="resumenCompra" class="resumen-compra" hidden>
+            <div class="confirmacion-titulo">
+                <span class="etiqueta">CALLE TUNING</span>
+                <h1>¡Compra registrada!</h1>
+                <p>Tu operación se guardó correctamente.</p>
+            </div>
+
+            <div class="datos-compra">
+                <div>
+                    <span>Número de venta</span>
+                    <strong id="numeroVenta">—</strong>
+                </div>
+                <div>
+                    <span>Fecha</span>
+                    <strong id="fechaVenta">—</strong>
+                </div>
+                <div>
+                    <span>Estado</span>
+                    <strong class="estado-registrado">Registrada</strong>
+                </div>
+            </div>
+
+            <p class="metodo-confirmado">Método de pago: <strong id="metodoPagoCompra">—</strong></p>
+            <h2>Detalle de tu compra</h2>
+
+            <div class="tabla-contenedor">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Precio unitario</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody id="detalleCompra"></tbody>
+                </table>
+            </div>
+
+            <div class="total-compra">
+                <span>Total de la compra</span>
+                <strong id="totalCompra">S/ 0.00</strong>
+            </div>
+
+            <p class="aviso">
+                Conserva el número de venta para futuras consultas.
+            </p>
+
+            <a href="/tienda.html" class="boton-principal">
+                Volver a la tienda
+            </a>
+        </section>
+
+        <section id="compraNoConfirmada" class="mensaje-error" hidden>
+            <div class="icono-error" aria-hidden="true">!</div>
+            <h1>Compra aún no confirmada</h1>
+            <p id="mensajeError">
+                No encontramos una confirmación válida. Tu compra no se
+                considera registrada desde esta pantalla.
+            </p>
+            <a href="/tienda.html" class="boton-principal">
+                Volver a la tienda
+            </a>
+        </section>
+    </main>
+
+    <footer class="pie-pagina">
+        <span>© <span id="anioActual"></span> CALLE TUNING</span>
+        <span>Personaliza. Protege. Destaca.</span>
+    </footer>
+</body>
+
+</html>

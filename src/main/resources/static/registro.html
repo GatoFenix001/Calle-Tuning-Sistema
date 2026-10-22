@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Crear cuenta | CALLE TUNING</title>
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/registro.css">
+</head>
+
+<body>
+    <main class="login-container">
+        <section class="login-card">
+            <div class="brand">
+                <div class="brand-icon">CT</div>
+                <h1>CALLE <span>TUNING</span></h1>
+                <p>Tu estilo comienza aquí</p>
+            </div>
+            <h2>Crear cuenta de cliente</h2>
+            <p class="subtitle">Regístrate una sola vez para comprar sin volver a ingresar tus datos de cuenta en cada
+                pedido.</p>
+            <div id="mensaje" class="aviso" hidden role="status"></div>
+            <form id="registroForm">
+                <div class="registro-grid"><label>Nombre<input name="nombre" maxlength="100" autocomplete="given-name"
+                            required></label><label>Apellido<input name="apellido" maxlength="100"
+                            autocomplete="family-name" required></label><label class="completo">Correo electrónico<input
+                            name="email" type="email" maxlength="150" autocomplete="email" required></label><label
+                        class="completo">Usuario<input name="username" minlength="4" maxlength="50"
+                            autocomplete="username" required><small>Lo usarás para iniciar sesión.</small></label><label
+                        class="completo">Contraseña<input name="password" type="password" minlength="8" maxlength="72"
+                            autocomplete="new-password" required><small>Mínimo 8 caracteres.</small></label><label
+                        class="completo">Confirmar contraseña<input name="confirmar" type="password" minlength="8"
+                            maxlength="72" autocomplete="new-password" required></label></div><button
+                    class="login-button" type="submit" id="btnRegistro">Crear cuenta</button>
+            </form>
+            <p class="subtitle" style="margin-top:18px">¿Ya tienes cuenta? <a href="/login.html">Inicia sesión</a></p>
+            <p class="subtitle"><a href="/tienda.html">← Volver a la tienda</a></p>
+            <p class="footer">© CALLE TUNING · Cuenta de cliente</p>
+        </section>
+    </main>
+    <script src="/js/registro.js"></script>
+</body>
+
+</html>
