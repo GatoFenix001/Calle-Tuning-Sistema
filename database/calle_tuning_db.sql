@@ -118,7 +118,7 @@ CREATE TABLE public.movimiento_inventario (
 );
 
 -- ============================================================
--- DATOS INICIALES DE PRUEBA
+-- DATOS INICIALES 
 -- ============================================================
 
 INSERT INTO public.rol (id, nombre) VALUES
